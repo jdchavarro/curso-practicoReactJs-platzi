@@ -15,8 +15,19 @@ const Header = () => {
   const [toggleOrders, setToggleOrders] = useState(false);
   const { state } = useContext(AppContext);
 
+  /* window.addEventListener("scroll", () => {
+    setToggle(false);
+    setToggleOrders(false);
+  }); */
+
   const handleToggle = () => {
+    setToggleOrders(false);
     setToggle(!toggle);
+  };
+
+  const handleToggleOrders = () => {
+    setToggle(false);
+    setToggleOrders(!toggleOrders);
   };
 
   return (
@@ -50,10 +61,7 @@ const Header = () => {
           <li className="navbar-email" onClick={handleToggle}>
             platzi@example.com
           </li>
-          <li
-            className="navbar-shopping-cart"
-            onClick={() => setToggleOrders(!toggleOrders)}
-          >
+          <li className="navbar-shopping-cart" onClick={handleToggleOrders}>
             <img src={shoppingCart} alt="shopping cart" />
             {state.cart.length > 0 ? <div>{state.cart.length}</div> : null}
           </li>
