@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
-import Menu from "@components/Menu";
+
 import AppContext from "@context/AppContext";
-import "@styles/Header.scss";
 import MyOrder from "@containers/MyOrder";
+import Menu from "@components/Menu";
+
 import iconMenu from "@icons/icon_menu.svg";
-import logo from "@logos/logo_yard_sale.svg";
 import shoppingCart from "@icons/icon_shopping_cart.svg";
+import logo from "@logos/logo_yard_sale.svg";
+
+import "@styles/Header.scss";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
