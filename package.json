@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jdchavarro.github.io/curso-practicoReactJs-platzi",
   "name": "curso-practicoreactjs-platzi",
   "version": "1.0.0",
   "description": "react-shop",
@@ -6,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "jdchavarro",
   "license": "MIT",
@@ -27,6 +30,7 @@
   },
   "devDependencies": {
     "css-loader": "^6.7.3",
+    "gh-pages": "^5.0.0",
     "mini-css-extract-plugin": "^2.7.4",
     "sass": "^1.59.3",
     "sass-loader": "^13.2.0",
