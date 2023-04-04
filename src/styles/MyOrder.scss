@@ -23,6 +23,12 @@
 	font-size: var(--lg);
 	font-weight: bold;
 }
+.my-order-content__order-item-list {
+	padding: 1rem;
+	max-height: calc(100vh - 340px);
+	overflow: auto;
+}
+
 .order {
 	display: grid;
 	grid-template-columns: auto 1fr;
