@@ -6,7 +6,7 @@ import AppContext from '@context/AppContext';
 import flechita from '@icons/flechita.svg';
 
 const MyOrder = () => {
-	const { state } = useContext(AppContext);
+	const { state, setToggleOrders } = useContext(AppContext);
 
 	const sumTotal = () => {
 		const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
@@ -17,7 +17,7 @@ const MyOrder = () => {
 	return (
 		<aside className="MyOrder">
 			<div className="title-container">
-				<img src={flechita} alt="arrow" />
+				<img src={flechita} alt="arrow" onClick={() => setToggleOrders(false)}/>
 				<p className="title">My order</p>
 			</div>
 			<div className="my-order-content">

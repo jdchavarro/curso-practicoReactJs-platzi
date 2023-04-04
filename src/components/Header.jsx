@@ -12,8 +12,11 @@ import "@styles/Header.scss";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
-  const [toggleOrders, setToggleOrders] = useState(false);
-  const { state } = useContext(AppContext);
+  /* Previamente usabamos toggleOrder solo para cerrar y abrir el panel de ordenes
+  desde el carrito de compra, ahora lo podemos hacer tambien desde la flecha
+  dentro del mismo menu */
+  //const [toggleOrders, setToggleOrders] = useState(false);
+  const { state, setToggleOrders } = useContext(AppContext);
 
   /* window.addEventListener("scroll", () => {
     setToggle(false);
@@ -21,13 +24,15 @@ const Header = () => {
   }); */
 
   const handleToggle = () => {
-    setToggleOrders(false);
+    // setToggleOrders(false);
     setToggle(!toggle);
+    setToggleOrders(false);
   };
 
   const handleToggleOrders = () => {
     setToggle(false);
-    setToggleOrders(!toggleOrders);
+    // setToggleOrders(!toggleOrders);
+    setToggleOrders(!state.toggleOrders);
   };
 
   return (
@@ -68,7 +73,7 @@ const Header = () => {
         </ul>
       </div>
       {toggle && <Menu />}
-      {toggleOrders && <MyOrder />}
+      {state.toggleOrders && <MyOrder />}
     </nav>
   );
 };
