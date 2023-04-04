@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import AppContext from "@context/AppContext";
 import MyOrder from "@containers/MyOrder";
 import Menu from "@components/Menu";
+import MenuMobile from "@components/MenuMobile";
 
 import iconMenu from "@icons/icon_menu.svg";
 import shoppingCart from "@icons/icon_shopping_cart.svg";
@@ -11,7 +12,8 @@ import logo from "@logos/logo_yard_sale.svg";
 import "@styles/Header.scss";
 
 const Header = () => {
-  const [toggle, setToggle] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenuMobile, setToggleMenuMobile] = useState(false);
   /* Previamente usabamos toggleOrder solo para cerrar y abrir el panel de ordenes
   desde el carrito de compra, ahora lo podemos hacer tambien desde la flecha
   dentro del mismo menu */
@@ -23,21 +25,25 @@ const Header = () => {
     setToggleOrders(false);
   }); */
 
-  const handleToggle = () => {
+  const handleToggleMenuMobile = () => {
+    setToggleMenuMobile(!toggleMenuMobile);
+  }
+
+  const handleToggleMenu = () => {
     // setToggleOrders(false);
-    setToggle(!toggle);
+    setToggleMenu(!toggleMenu);
     setToggleOrders(false);
   };
 
   const handleToggleOrders = () => {
-    setToggle(false);
+    setToggleMenu(false);
     // setToggleOrders(!toggleOrders);
     setToggleOrders(!state.toggleOrders);
   };
 
   return (
     <nav>
-      <img src={iconMenu} alt="menu" className="menu" />
+      <img src={iconMenu} alt="menu" className="menu" onClick={handleToggleMenuMobile}/>
       <div className="navbar-left">
         <img src={logo} alt="logo" className="nav-logo" />
         <ul>
@@ -63,7 +69,7 @@ const Header = () => {
       </div>
       <div className="navbar-right">
         <ul>
-          <li className="navbar-email" onClick={handleToggle}>
+          <li className="navbar-email" onClick={handleToggleMenu}>
             platzi@example.com
           </li>
           <li className="navbar-shopping-cart" onClick={handleToggleOrders}>
@@ -72,8 +78,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      {toggle && <Menu />}
+      {toggleMenu && <Menu />}
       {state.toggleOrders && <MyOrder />}
+      {toggleMenuMobile && <MenuMobile />}
     </nav>
   );
 };
